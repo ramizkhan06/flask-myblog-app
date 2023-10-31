@@ -1,12 +1,12 @@
 # MyBlog
 
-## step 1: Start Virtual Environment
+## Step 1: Start Virtual Environment
             * .\virt\Scripts\activate
 
-## step 2: Install flask
+## Step 2: Install flask
             * pip install flask
 
-## step 3: Install all the requirements
+## Step 3: Install all the requirements
             * pip install -r requirements.txt
 
 ## Step 4: Create Database
