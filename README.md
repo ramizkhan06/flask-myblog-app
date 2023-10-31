@@ -1,23 +1,30 @@
----
-title: Flask
-description: A popular minimal server framework for Python
-tags:
-  - python
-  - flask
----
+# MyBlog
 
-# Python Flask Example
+## step 1: Start Virtual Environment
+            * .\virt\Scripts\activate
 
-This is a [Flask](https://flask.palletsprojects.com/en/1.1.x/) app that serves a simple JSON response.
+## step 2: Install flask
+            * pip install flask
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/zUcpux)
+## step 3: Install all the requirements
+            * pip install -r requirements.txt
 
-## ✨ Features
+## Step 4: Create Database
+            * python create_db.py
 
-- Python
-- Flask
+## Step 5: Set up the Environment
+            For Windows Terminal
+            * set FLASK_APP=app.py
+            * set FLASK_ENV=development
+            * set FLASK_DEBUG=1
 
-## 💁‍♀️ How to use
+            For Git Bash Terminal
+            * export FLASK_APP=app.py
+            * export FLASK_ENV=development
+            * export FLASK_DEBUG=1
 
-- Install Python requirements `pip install -r requirements.txt`
-- Start the server for development `python3 main.py`
+## step 6 : Start the application
+             * flask run
+
+### This will start application on port 5000
+            * http://localhost:5000 or http://127.0.0.1:5000
