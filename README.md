@@ -23,7 +23,7 @@
             * export FLASK_ENV=development
             * export FLASK_DEBUG=1
 
-## step 6 : Start the application
+## Step 6 : Start the application
              * flask run
 
 ### This will start application on port 5000
