@@ -18,19 +18,20 @@
 		<small>Topic: {{ post.slug }}</small><br/>
 		<small>By: {{ post.poster.name }}</small><br/>
 		<small>{{ post.date_posted }}</small><br/><br/>
-		<p>{{ post.content|safe }}</p>
-		<a href="{{ url_for('post', id=post.id) }}"><button type="button" class="btn btn-outline-primary btn-sm">View Post</button></a>
+
+		{% if post.content|length > 200 %}
+			<p>{{ post.content|truncate(200, True, '...')|safe }}</p>
+			<a href="{{ url_for('post', id=post.id) }}"><button type="button" class="btn btn-outline-primary btn-sm">Read More</button></a>
+		{% else %}
+			<p>{{ post.content|safe }}</p>
+			<a href="{{ url_for('post', id=post.id) }}"><button type="button" class="btn btn-outline-primary btn-sm">View Post</button></a>
+		{% endif %}
 
 		{% if post.poster_id == current_user.id %}
-
-		<a href="{{ url_for('edit_post', id=post.id) }}"><button type="button" class="btn btn-outline-secondary btn-sm">Edit Post</button></a>
-
-		<a href="{{ url_for('delete_post', id = post.id) }}"><button type="button" class="btn btn-outline-danger btn-sm">Delete</button></a>
-
+			<a href="{{ url_for('edit_post', id=post.id) }}"><button type="button" class="btn btn-outline-secondary btn-sm">Edit Post</button></a>
+			<a href="{{ url_for('delete_post', id=post.id) }}"><button type="button" class="btn btn-outline-danger btn-sm">Delete</button></a>
 		{% endif %}
 	</div>
-		
-
 	{% endfor %}
 
 {% endblock %}
