@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	{% for message in get_flashed_messages() %}
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
+  		 {{ message }}
+  		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+	{% endfor %}
+
+<h2>DashBoard</h2>
+
+
+<br>
+<br>
+<div class="card">
+  <div class="card-header">
+    <strong>YOUR DETAILS</strong>
+  </div>
+  <div class="card-body">
+  	<!-- <h4 class="card-text">Welcome to your Dashboard</h4> -->
+
+  	<div class="container">
+  		<div class="row">
+  			<div class="col-8">
+  				
+  			
+  	<strong>Username: </strong>{{ current_user.name }}<br>
+	<strong>Username: </strong>{{ current_user.username }}<br>
+	<strong>User ID: </strong>{{ current_user.id }}<br>
+	<strong>Email ID: </strong>{{ current_user.email }}<br>
+	<strong>Date Added: </strong>{{ current_user.date_added }}<br>
+	<br>
+    <a href="{{ url_for('logout') }}" class="btn btn-danger btn-sm">Log Out</a>
+
+    <a href="{{ url_for('delete', id = current_user.id) }}" class="btn btn-outline-danger btn-sm">Delete Profile</a>
+
+    
+    </div>
+  		<div class="col-4">
+  			<img src="{{ url_for('static', filename = 'images/default_profile_pic.png') }}" width="170" align="right">
+  		</div>
+		</div>
+		</div>
+
+
+
+  </div>
+</div>
+<br>
+
+
+<div class="card">
+  <div class="card-header">
+    Update Profile
+  </div>
+  <div class="card-body">
+
+  	<form action="/dashboard" method="POST" enctype="multipart/form-data">
+		{{ form.hidden_tag() }}
+
+		{{ form.name.label(class="form-label") }}
+
+		{{ form.name(class="form-control", value=name_to_update.name) }}
+		<br/>
+		{{ form.username.label(class="form-label") }}
+
+		{{ form.username(class="form-control", value=name_to_update.username) }}
+		<br/>
+
+
+		{{ form.email.label(class="form-label") }}
+
+		{{ form.email(class="form-control", value=name_to_update.email) }}
+		<br/>
+		
+
+		
+		{{ form.submit(class="btn btn-secondary ") }}
+			
+
+		
+
+
+	</form>
+
+
+
+</div>
+
+	
+	
+
+
+</div>
+
+
+{% endblock %}
