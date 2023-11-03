@@ -9,91 +9,67 @@
 		</div>
 	{% endfor %}
 
-<h2>DashBoard</h2>
+	<h2>DashBoard</h2>
 
-
-<br>
-<br>
-<div class="card">
-  <div class="card-header">
-    <strong>YOUR DETAILS</strong>
-  </div>
-  <div class="card-body">
-  	<!-- <h4 class="card-text">Welcome to your Dashboard</h4> -->
-
-  	<div class="container">
-  		<div class="row">
-  			<div class="col-8">
-  				
-  			
-  	<strong>Username: </strong>{{ current_user.name }}<br>
-	<strong>Username: </strong>{{ current_user.username }}<br>
-	<strong>User ID: </strong>{{ current_user.id }}<br>
-	<strong>Email ID: </strong>{{ current_user.email }}<br>
-	<strong>Date Added: </strong>{{ current_user.date_added }}<br>
 	<br>
-    <a href="{{ url_for('logout') }}" class="btn btn-danger btn-sm">Log Out</a>
+	<br>
+	<div class="card">
+	  <div class="card-header">
+	    <strong>YOUR DETAILS</strong>
+	  </div>
+	  <div class="card-body">
+	  	<!-- <h4 class="card-text">Welcome to your Dashboard</h4> -->
 
-    <a href="{{ url_for('delete', id = current_user.id) }}" class="btn btn-outline-danger btn-sm">Delete Profile</a>
-
-    
-    </div>
-  		<div class="col-4">
-  			<img src="{{ url_for('static', filename = 'images/default_profile_pic.png') }}" width="170" align="right">
-  		</div>
+	  	<div class="container">
+	  		<div class="row">
+	  			<div class="col-lg-8 mb-5 mb-lg-0">
+	  				<strong>Username: </strong>{{ current_user.name }}<br>
+					<strong>Name: </strong>{{ current_user.username }}<br>
+					<strong>User ID: </strong>{{ current_user.id }}<br>
+					<strong>Email ID: </strong>{{ current_user.email }}<br>
+					<strong>Date Added: </strong>{{ current_user.date_added }}<br>
+					<br>
+				    <a href="{{ url_for('logout') }}" class="btn btn-danger btn-sm">Log Out</a>
+				    <a href="{{ url_for('delete', id=current_user.id) }}" class="btn btn-outline-danger btn-sm">Delete Profile</a>
+				</div> <br>
+		  		<div class="col-lg-4 d-flex justify-content-center align-items-center order-first order-lg-last mt-3 mt-lg-0">
+		  			<img src="{{ url_for('static', filename='images/default_profile_pic.png') }}" class="img-fluid max-width: 100%; height: auto;" style="max-width: 170px;">
+		  		</div>
+			</div>
 		</div>
-		</div>
+	  </div>
+	</div>
+	<br>
+
+	<div class="card">
+	  <div class="card-header">
+	    Update Profile
+	  </div>
+	  <div class="card-body">
+
+	  	<form action="/dashboard" method="POST" enctype="multipart/form-data">
+			{{ form.hidden_tag() }}
+
+			{{ form.name.label(class="form-label") }}
+
+			{{ form.name(class="form-control", value=name_to_update.name) }}
+			<br/>
+			{{ form.username.label(class="form-label") }}
+
+			{{ form.username(class="form-control", value=name_to_update.username) }}
+			<br/>
 
 
+			{{ form.email.label(class="form-label") }}
 
-  </div>
-</div>
-<br>
-
-
-<div class="card">
-  <div class="card-header">
-    Update Profile
-  </div>
-  <div class="card-body">
-
-  	<form action="/dashboard" method="POST" enctype="multipart/form-data">
-		{{ form.hidden_tag() }}
-
-		{{ form.name.label(class="form-label") }}
-
-		{{ form.name(class="form-control", value=name_to_update.name) }}
-		<br/>
-		{{ form.username.label(class="form-label") }}
-
-		{{ form.username(class="form-control", value=name_to_update.username) }}
-		<br/>
-
-
-		{{ form.email.label(class="form-label") }}
-
-		{{ form.email(class="form-control", value=name_to_update.email) }}
-		<br/>
-		
-
-		
-		{{ form.submit(class="btn btn-secondary ") }}
+			{{ form.email(class="form-control", value=name_to_update.email) }}
+			<br/>
 			
 
-		
-
-
-	</form>
-
-
-
+			
+			{{ form.submit(class="btn btn-secondary ") }}
+		</form>
+	</div>
 </div>
-
-	
-	
-
-
-</div>
-
 
 {% endblock %}
